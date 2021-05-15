@@ -6,7 +6,7 @@ const User = require('../models/userSchema');
 
 const getUserByUsername = asyncHandler(
     async (req, res) => {
-        const user = User.find({ username: req.username })
+        const user = await User.find({ username: req.body.username })
         if (user) {
             res.json(user)
         }
@@ -21,7 +21,6 @@ const getUserByUsername = asyncHandler(
 const setUser = asyncHandler(
     async (req, res) => {
         
-        var body = req.body;
         const user = await User.create(req.body.user);
         if(user){
             res.status(201).json({

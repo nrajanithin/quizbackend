@@ -3,7 +3,7 @@ const Question = require('../models/questionSchema');
 
 const getQuestionByUsername = asyncHandler(
     async (req, res) => {
-        const question = await Question.find({ username: req.params.username })
+        const question = await Question.find({ username: req.body.username })
 
         if (question) {
             res.json(question)
@@ -16,16 +16,18 @@ const getQuestionByUsername = asyncHandler(
 
 const setQuestion = asyncHandler(
     async (req, res) => {
-        var question = Question(req.question)
+        var question = await Question.create(req.body.user);
 
-        question.save((err, doc) => {
-            if (err) {
-                res.status(404).json({ message: 'question Data is saved' });
-            }
-            else {
-                res.status(200);
-            }
-        });
+        if(question){
+            res.status(201).json({
+                name: question.username})
+        }else{
+            res.status(400)
+            throw new Error('Invalid Question data')
+        }
+
+
+      
     }
 );
 
