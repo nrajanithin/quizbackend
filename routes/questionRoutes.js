@@ -8,11 +8,15 @@ const router = express.Router();
 const questionController = require('../controllers/questionController.js');
 const getQuestionByUsername = questionController.getQuestionByUsername;
 const setQuestion = questionController.setQuestion;
+const updateQuestion = questionController.updateQuestion;
+const deleteQuestion = questionController.deleteQuestion;
 
 router
 .route('/question')
 .get(getQuestionByUsername)
-.put(setQuestion)
+.post(setQuestion)
+.put(updateQuestion)
+.delete(deleteQuestion)
 
 
 module.exports = router;

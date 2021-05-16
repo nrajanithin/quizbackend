@@ -17,7 +17,12 @@ var questionSchema = {
 
                         question:
                         {
-                            type: templateSchema
+                            type: String//templateSchema
+                        },
+
+                        img:
+                        {
+                            type: String
                         },
                         
                         blank:
@@ -27,7 +32,7 @@ var questionSchema = {
 
                         options:
                         {
-                            type: [templateSchema]
+                            type: [String]
                         },
 
                         tags:
