@@ -3,9 +3,12 @@ const Question = require('../models/questionSchema');
 
 const getQuestionByUsername = asyncHandler(
     async (req, res) => {
-        var question = await Question.find({ username: req.body.username })
+        console.log("get question request")
+        console.log(req.params.username);
+        var question = await Question.find({ username: req.params.username })
         if (question) {
-            res.json(question)
+            console.log(question);
+            res.send(question);
         }
         else {
             res.status(404).json({ message: 'No user available' })

@@ -12,8 +12,11 @@ const updateQuestion = questionController.updateQuestion;
 const deleteQuestion = questionController.deleteQuestion;
 
 router
-.route('/question')
+.route('/question/:username')
 .get(getQuestionByUsername)
+
+router
+.route('/question')
 .post(setQuestion)
 .put(updateQuestion)
 .delete(deleteQuestion)
